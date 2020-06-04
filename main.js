@@ -77,5 +77,5 @@ ipcMain.on("name:add", (e, name) => {
   index.close();
 });
 ipcMain.on("score", (e, s) => {
-  console.log("===", s);
+  wingame.webContents.send("s", s);
 });
