@@ -76,3 +76,6 @@ ipcMain.on("name:add", (e, name) => {
   wingame.webContents.send("name", name);
   index.close();
 });
+ipcMain.on("score", (e, s) => {
+  console.log("===", s);
+});

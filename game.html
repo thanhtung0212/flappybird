@@ -76,7 +76,6 @@
     <h3><i onclick="myFunction(this)" class="fa fa-thumbs-up"></i></h3>
     <script src="game.js"></script>
     <script>
-      const { ipcRenderer } = require("electron");
       const nav = document.querySelector("nav");
 
       // const score = document.getElementById("score").innerHTML;
@@ -85,6 +84,9 @@
         nav.className = "alert alert-primary text-center";
         const itemText = document.createTextNode(`Xin chao:  ${name}`);
         nav.appendChild(itemText);
+      });
+      ipcRenderer.on("sk", (e, s) => {
+        console.log("---", s);
       });
     </script>
   </body>

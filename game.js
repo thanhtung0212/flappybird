@@ -1,3 +1,4 @@
+const { ipcRenderer } = require("electron");
 // function smile() {
 //   var a;
 //   a = document.getElementById("div1");
@@ -152,6 +153,7 @@ function display_game_over() {
   ctx.fillText("Score: " + score, myCanvas.width / 2, 150);
   ctx.font = "20px Arial";
   ctx.fillText("Click, touch, or press to play again", myCanvas.width / 2, 300);
+  ipcRenderer.send("score", "Hello");
 }
 function display_bar_running_along_bottom() {
   if (bottom_bar_offset < -23) bottom_bar_offset = 0;
