@@ -1,0 +1,91 @@
+<html>
+  <head>
+    <title>Flappy Bird</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <style>
+    #div1 {
+      font-size: 48px;
+    }
+
+    body {
+      background-color: #0f0e0e;
+      font-family: "Pacifico";
+    }
+
+    h3 {
+      background-color: #66e37b;
+      text-shadow: 5px 5px 5px #dfd2ec;
+      text-align: center;
+    }
+
+    canvas {
+      animation: mymove 5s infinite;
+      border: 5px solid #0a3cda;
+      border-style: dotted;
+      border-radius: 15px 50px;
+    }
+
+    @keyframes mymove {
+      50% {
+        box-shadow: 10px 20px 30px blue;
+      }
+    }
+
+    h3 {
+      font-family: "Permanent Marker";
+    }
+  </style>
+
+  <body>
+    <nav style="font-weight: 600; font-size: 40px;" id="name"></nav>
+    <h3>
+      <div id="div1" class="fa"></div>
+    </h3>
+    <h1 id="score"></h1>
+    <div class="text-center">
+      <canvas
+        id="myCanvas"
+        width="320"
+        height="380"
+        style="
+          background: url('http://s2js.com/img/etc/flappyback.png');
+          background-size: 100%;
+          height: 95%;
+        "
+      ></canvas>
+    </div>
+
+    <h3><i onclick="myFunction(this)" class="fa fa-thumbs-up"></i></h3>
+    <script src="game.js"></script>
+    <script>
+      const { ipcRenderer } = require("electron");
+      const nav = document.querySelector("nav");
+
+      // const score = document.getElementById("score").innerHTML;
+      // console.log("====", score);
+      ipcRenderer.on("name", (e, name) => {
+        nav.className = "alert alert-primary text-center";
+        const itemText = document.createTextNode(`Xin chao:  ${name}`);
+        nav.appendChild(itemText);
+      });
+    </script>
+  </body>
+</html>
